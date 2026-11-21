@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class 10 Maths Model Paper 01 · RK Institution</title>
+  <meta name="description" content="CBSE Class 10 Mathematics model paper, 80 marks. Answer on the page and see your score.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,500&family=Noto+Sans+Devanagari:wght@400;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    .paper { max-width: 820px; }
+    .q { background: var(--white); border: 1px solid var(--line); padding: 16px 18px; margin: 14px 0; }
+    .q h3 { font-size: 18px; margin: 0 0 8px; font-family: var(--sans); letter-spacing: 0; }
+    .q .marks { float: right; color: var(--maroon); font-size: 13px; letter-spacing: 0.04em; }
+    .choices { display: grid; gap: 8px; margin-top: 10px; }
+    .choices label { display: flex; gap: 10px; align-items: flex-start; background: var(--paper); border: 1px solid var(--line); padding: 10px 12px; cursor: pointer; }
+    .choices label.good { background: #e5f2e4; border-color: #2f6b32; }
+    .choices label.bad { background: #f8e4e2; border-color: var(--maroon); }
+    .fields { display: grid; gap: 8px; margin-top: 10px; }
+    .fields label { display: grid; gap: 4px; font-size: 14px; }
+    .fields input { padding: 10px; border: 1px solid var(--line); background: var(--paper); }
+    .fields input.good { background: #e5f2e4; }
+    .fields input.bad { background: #f8e4e2; }
+    figure { margin: 12px 0; background: var(--paper); border: 1px solid var(--line); padding: 8px; }
+    figure svg { width: 100%; height: auto; max-height: 280px; }
+    figcaption { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+    .score { font-family: var(--serif); font-size: 64px; line-height: 1; margin: 0; }
+    #result { scroll-margin-top: 84px; }
+    .miss { margin: 6px 0; }
+  </style>
+</head>
+<body data-page="school" data-root="../">
+  <div id="top"></div>
+  <main id="main" class="section">
+    <article class="wrap paper">
+      <a class="back" href="../school.html">Class 1–10</a>
+      <p class="kicker" style="color:var(--maroon);margin-top:18px">Board Excellence Series · Session 2026–27</p>
+      <h1>Class 10 Mathematics<br>Model Paper 01</h1>
+      <p>CBSE board pattern. 38 questions, 80 marks, 3 hours. Calculator not allowed. Where the printed paper offers an OR, this sitting uses the first choice. Take \(\pi = 22/7\) unless a question says otherwise.</p>
+      <div class="callout">The live score marks the 20 multiple-choice questions and every question with a definite number or short result. That is <strong>67 marks</strong>. Four proof questions, worth 13 marks, stay in the notebook. Their model result opens after you submit, and it is not added to the score.</div>
+      <form id="paper">
+        <label>Name <input name="student" autocomplete="name" placeholder="Your name" style="display:block;margin-top:6px;padding:10px;border:1px solid var(--line);background:var(--white);width:min(100%,320px)"></label>
+        <div id="questions"></div>
+        <button class="btn ink" type="submit">Show my score</button>
+      </form>
+      <div id="result" class="q" hidden></div>
+    </article>
+  </main>
+  <div id="foot"></div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/site.js"></script>
+  <script>
+    const fig = {
+      q7: `<svg viewBox="0 0 360 230" role="img" aria-label="Triangle ABC with DE parallel to BC. AD is 2 cm, DB is 3 cm, AE is 1.6 cm.">
+        <polygon points="180,24 40,196 320,196" fill="none" stroke="#14110e" stroke-width="2"/>
+        <line x1="124" y1="93" x2="236" y2="93" stroke="#8d2433" stroke-width="2.4"/>
+        <text x="174" y="16" text-anchor="middle" font-size="16">A</text>
+        <text x="28" y="212" font-size="16">B</text>
+        <text x="324" y="212" font-size="16">C</text>
+        <text x="108" y="88" font-size="16">D</text>
+        <text x="242" y="88" font-size="16">E</text>
+        <text x="78" y="78" font-size="13" fill="#8d2433">2 cm</text>
+        <text x="70" y="150" font-size="13" fill="#8d2433">3 cm</text>
+        <text x="214" y="70" font-size="13" fill="#8d2433">1.6 cm</text>
+      </svg>`,
+      q10: `<svg viewBox="0 0 380 200" role="img" aria-label="A 15 m tower and a point on the ground 15 square root 3 m from its base.">
+        <line x1="24" y1="168" x2="360" y2="168" stroke="#14110e" stroke-width="2"/>
+        <line x1="56" y1="168" x2="56" y2="48" stroke="#14110e" stroke-width="2.4"/>
+        <line x1="56" y1="48" x2="264" y2="168" stroke="#8d2433" stroke-width="2"/>
+        <path d="M232 168 A36 36 0 0 0 250 150" fill="none" stroke="#8d2433"/>
+        <text x="64" y="112" font-size="14">15 m</text>
+        <text x="120" y="186" font-size="14">15√3 m</text>
+        <text x="270" y="158" font-size="14">θ</text>
+      </svg>`,
+      q11: `<svg viewBox="0 0 360 220" role="img" aria-label="Tangent of length 24 cm from a point 25 cm from the centre. The radius meets the tangent at a right angle.">
+        <circle cx="90" cy="130" r="36" fill="none" stroke="#14110e" stroke-width="2"/>
+        <circle cx="90" cy="130" r="2.4" fill="#14110e"/>
+        <line x1="90" y1="130" x2="126" y2="130" stroke="#14110e" stroke-width="2"/>
+        <line x1="126" y1="130" x2="126" y2="22" stroke="#8d2433" stroke-width="2"/>
+        <line x1="90" y1="130" x2="126" y2="22" stroke="#14110e" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <path d="M126 118 H114 V130" fill="none" stroke="#14110e"/>
+        <text x="74" y="148" font-size="16">O</text>
+        <text x="132" y="128" font-size="16">P</text>
+        <text x="132" y="20" font-size="16">Q</text>
+        <text x="134" y="78" font-size="14" fill="#8d2433">24 cm</text>
+        <text x="96" y="78" font-size="14">25 cm</text>
+      </svg>`,
+      q12: `<svg viewBox="0 0 380 230" role="img" aria-label="Two tangents to a circle of radius 3 cm, inclined at 60 degrees. Each radius is perpendicular to its tangent.">
+        <circle cx="120" cy="120" r="55" fill="none" stroke="#14110e" stroke-width="2"/>
+        <circle cx="120" cy="120" r="2.4" fill="#14110e"/>
+        <line x1="120" y1="120" x2="147" y2="72" stroke="#14110e" stroke-width="2"/>
+        <line x1="120" y1="120" x2="147" y2="168" stroke="#14110e" stroke-width="2"/>
+        <line x1="147" y1="72" x2="230" y2="120" stroke="#8d2433" stroke-width="2"/>
+        <line x1="147" y1="168" x2="230" y2="120" stroke="#8d2433" stroke-width="2"/>
+        <path d="M147 84 L159 84 L155 96" fill="none" stroke="#14110e"/>
+        <path d="M206 120 A24 24 0 0 1 214 132" fill="none" stroke="#8d2433"/>
+        <text x="100" y="116" font-size="16">O</text>
+        <text x="236" y="124" font-size="16">P</text>
+        <text x="128" y="96" font-size="14">3 cm</text>
+        <text x="214" y="108" font-size="14" fill="#8d2433">60°</text>
+      </svg>`,
+      q22: `<svg viewBox="0 0 360 230" role="img" aria-label="Triangle ABC with DE parallel to BC. Segments are labelled x, x minus 2, x plus 2 and x minus 1.">
+        <polygon points="180,24 40,196 320,196" fill="none" stroke="#14110e" stroke-width="2"/>
+        <line x1="124" y1="93" x2="236" y2="93" stroke="#8d2433" stroke-width="2.4"/>
+        <text x="174" y="16" text-anchor="middle" font-size="16">A</text>
+        <text x="28" y="212" font-size="16">B</text>
+        <text x="324" y="212" font-size="16">C</text>
+        <text x="108" y="88" font-size="16">D</text>
+        <text x="242" y="88" font-size="16">E</text>
+        <text x="86" y="70" font-size="14" fill="#8d2433">x</text>
+        <text x="72" y="150" font-size="14" fill="#8d2433">x − 2</text>
+        <text x="220" y="64" font-size="14" fill="#8d2433">x + 2</text>
+        <text x="250" y="150" font-size="14" fill="#8d2433">x − 1</text>
+      </svg>`,
+      q25: `<svg viewBox="0 0 360 230" role="img" aria-label="Two concentric circles. A chord of the larger circle touches the smaller circle. The chord is 8 cm and the larger radius is 5 cm.">
+        <circle cx="180" cy="124" r="90" fill="none" stroke="#14110e" stroke-width="2"/>
+        <circle cx="180" cy="124" r="54" fill="none" stroke="#8d2433" stroke-width="2"/>
+        <line x1="108" y1="70" x2="252" y2="70" stroke="#14110e" stroke-width="2.2"/>
+        <line x1="180" y1="124" x2="180" y2="34" stroke="#14110e" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <circle cx="180" cy="124" r="2.5" fill="#14110e"/>
+        <text x="186" y="140" font-size="16">O</text>
+        <text x="186" y="84" font-size="14">5 cm</text>
+        <text x="156" y="62" font-size="14">8 cm</text>
+      </svg>`,
+      q34: `<svg viewBox="0 0 360 230" role="img" aria-label="A 7 m building and a taller cable tower. Angle of elevation of the top is 60 degrees and angle of depression of the foot is 45 degrees.">
+        <line x1="16" y1="190" x2="340" y2="190" stroke="#14110e" stroke-width="2"/>
+        <line x1="40" y1="190" x2="40" y2="140" stroke="#14110e" stroke-width="2.6"/>
+        <line x1="90" y1="190" x2="90" y2="53" stroke="#14110e" stroke-width="2.6"/>
+        <line x1="40" y1="140" x2="90" y2="140" stroke="#8d2433" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="40" y1="140" x2="90" y2="53" stroke="#8d2433" stroke-width="2"/>
+        <line x1="40" y1="140" x2="90" y2="190" stroke="#8d2433" stroke-width="2"/>
+        <text x="8" y="170" font-size="14">7 m</text>
+        <text x="96" y="48" font-size="14">tower</text>
+        <text x="96" y="100" font-size="14" fill="#8d2433">60°</text>
+        <text x="96" y="168" font-size="14" fill="#8d2433">45°</text>
+      </svg>`,
+      q35: `<svg viewBox="0 0 360 240" role="img" aria-label="A toy made of a hemisphere with a cone on top. Cone height 2 cm, base diameter 4 cm.">
+        <path d="M90 120 A90 90 0 0 0 270 120" fill="none" stroke="#14110e" stroke-width="2"/>
+        <line x1="90" y1="120" x2="270" y2="120" stroke="#14110e" stroke-width="2"/>
+        <polygon points="90,120 180,36 270,120" fill="none" stroke="#8d2433" stroke-width="2"/>
+        <line x1="180" y1="36" x2="180" y2="120" stroke="#8d2433" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <text x="186" y="84" font-size="14" fill="#8d2433">2 cm</text>
+        <text x="150" y="140" font-size="14">4 cm</text>
+      </svg>`,
+      q37: `<svg viewBox="0 0 360 240" role="img" aria-label="Points A(3,1), B(6,4) and C(8,6) on a coordinate grid.">
+        <line x1="40" y1="200" x2="330" y2="200" stroke="#14110e" stroke-width="1.6"/>
+        <line x1="40" y1="200" x2="40" y2="24" stroke="#14110e" stroke-width="1.6"/>
+        <text x="334" y="204" font-size="14">x</text>
+        <text x="28" y="20" font-size="14">y</text>
+        <circle cx="130" cy="180" r="4" fill="#8d2433"/>
+        <circle cx="220" cy="120" r="4" fill="#8d2433"/>
+        <circle cx="280" cy="80" r="4" fill="#8d2433"/>
+        <text x="138" y="196" font-size="14">A(3, 1)</text>
+        <text x="228" y="116" font-size="14">B(6, 4)</text>
+        <text x="286" y="76" font-size="14">C(8, 6)</text>
+      </svg>`
+    };
+
+    const questions = [
+      { id: "q1", marks: 1, section: "A", title: "Q1 · Real numbers", prompt: "If \\(a = x^3 y^2\\) and \\(b = xy^3\\), with \\(x\\) and \\(y\\) prime, then \\(\\mathrm{HCF}(a,b)\\) is", choices: ["\\(xy\\)", "\\(xy^2\\)", "\\(x^3 y^3\\)", "\\(x^2 y^2\\)"], answer: 1, why: "The smaller power of \\(x\\) is 1 and of \\(y\\) is 2, so the HCF is \\(xy^2\\)." },
+      { id: "q2", marks: 1, section: "A", title: "Q2 · Polynomials", prompt: "The quadratic polynomial with zeroes \\(5+\\sqrt{2}\\) and \\(5-\\sqrt{2}\\) is", choices: ["\\(x^2-10x+23\\)", "\\(x^2+10x+23\\)", "\\(x^2-10x-23\\)", "\\(x^2+10x-23\\)"], answer: 0, why: "Sum of zeroes is 10 and product is 23, so the polynomial is \\(x^2-10x+23\\)." },
+      { id: "q3", marks: 1, section: "A", title: "Q3 · Linear equations", prompt: "The pair \\(x+2y+5=0\\) and \\(-3x-6y+1=0\\) has", choices: ["a unique solution", "exactly two solutions", "infinitely many solutions", "no solution"], answer: 3, why: "\\(a_1/a_2=b_1/b_2\\ne c_1/c_2\\), so the lines are parallel." },
+      { id: "q4", marks: 1, section: "A", title: "Q4 · Quadratic equations", prompt: "The roots of \\(2x^2-4x+3=0\\) are", choices: ["real and equal", "real and distinct", "not real", "real and irrational"], answer: 2, why: "Discriminant \\(16-24=-8<0\\)." },
+      { id: "q5", marks: 1, section: "A", title: "Q5 · Arithmetic progressions", prompt: "If the common difference of an AP is 5, then \\(a_{18}-a_{13}\\) is", choices: ["5", "20", "25", "30"], answer: 2, why: "\\(a_{18}-a_{13}=5d=25\\)." },
+      { id: "q6", marks: 1, section: "A", title: "Q6 · Coordinate geometry", prompt: "The distance of \\(P(-6,8)\\) from the origin is", choices: ["8 units", "\\(2\\sqrt{7}\\) units", "10 units", "6 units"], answer: 2, why: "\\(\\sqrt{36+64}=10\\)." },
+      { id: "q7", marks: 1, section: "A", title: "Q7 · Triangles", prompt: "In \\(\\triangle ABC\\), \\(DE\\parallel BC\\). \\(AD=2\\) cm, \\(DB=3\\) cm and \\(AE=1.6\\) cm. Then \\(EC\\) is", figure: "q7", choices: ["2.4 cm", "3.2 cm", "4.8 cm", "2.0 cm"], answer: 0, why: "\\(AD/DB=AE/EC\\) gives \\(2/3=1.6/EC\\), so \\(EC=2.4\\) cm." },
+      { id: "q8", marks: 1, section: "A", title: "Q8 · Trigonometry", prompt: "If \\(\\sin\\theta+\\cos\\theta=\\sqrt{2}\\cos\\theta\\), then \\(\\tan\\theta\\) is", choices: ["\\(\\sqrt{2}-1\\)", "\\(\\sqrt{2}+1\\)", "\\(1/\\sqrt{2}\\)", "\\(\\sqrt{3}\\)"], answer: 0, why: "\\(\\tan\\theta=\\sqrt{2}-1\\)." },
+      { id: "q9", marks: 1, section: "A", title: "Q9 · Trigonometry", prompt: "\\(\\dfrac{\\sin^2 30^\\circ+\\cos^2 30^\\circ}{\\sec^2 45^\\circ-\\tan^2 45^\\circ}\\) equals", choices: ["2", "1/2", "1", "0"], answer: 2, why: "Numerator is 1 and denominator is \\(2-1=1\\)." },
+      { id: "q10", marks: 1, section: "A", title: "Q10 · Heights and distances", prompt: "The angle of elevation of the top of a 15 m tower from a point \\(15\\sqrt{3}\\) m from its base is", figure: "q10", choices: ["\\(30^\\circ\\)", "\\(45^\\circ\\)", "\\(60^\\circ\\)", "\\(90^\\circ\\)"], answer: 0, why: "\\(\\tan\\theta=1/\\sqrt{3}\\), so \\(\\theta=30^\\circ\\)." },
+      { id: "q11", marks: 1, section: "A", title: "Q11 · Circles", prompt: "The tangent from \\(Q\\) is 24 cm and \\(OQ=25\\) cm. The radius is", figure: "q11", choices: ["7 cm", "12 cm", "15 cm", "24.5 cm"], answer: 0, why: "\\(r=\\sqrt{25^2-24^2}=7\\) cm." },
+      { id: "q12", marks: 1, section: "A", title: "Q12 · Circles", prompt: "Two tangents inclined at \\(60^\\circ\\) are drawn to a circle of radius 3 cm. Each tangent is", figure: "q12", choices: ["\\(\\dfrac{3}{2}\\sqrt{3}\\) cm", "6 cm", "3 cm", "\\(3\\sqrt{3}\\) cm"], answer: 3, why: "In the right triangle, \\(\\tan 30^\\circ=3/PT\\), so \\(PT=3\\sqrt{3}\\) cm." },
+      { id: "q13", marks: 1, section: "A", title: "Q13 · Areas related to circles", prompt: "If the perimeter and the area of a circle are numerically equal, the radius is", choices: ["2 units", "\\(\\pi\\) units", "4 units", "7 units"], answer: 0, why: "\\(2\\pi r=\\pi r^2\\) gives \\(r=2\\)." },
+      { id: "q14", marks: 1, section: "A", title: "Q14 · Areas related to circles", prompt: "Area of a sector of angle \\(\\theta\\) and radius \\(R\\) is", choices: ["\\(\\dfrac{\\theta}{180}\\times 2\\pi R\\)", "\\(\\dfrac{\\theta}{180}\\times \\pi R^2\\)", "\\(\\dfrac{\\theta}{360}\\times 2\\pi R\\)", "\\(\\dfrac{\\theta}{720}\\times 2\\pi R^2\\)"], answer: 3, why: "\\(\\dfrac{\\theta}{720}\\times 2\\pi R^2=\\dfrac{\\theta}{360}\\pi R^2\\)." },
+      { id: "q15", marks: 1, section: "A", title: "Q15 · Surface areas and volumes", prompt: "A cylinder of radius \\(r\\) and height \\(h\\) is recast into a cone of the same radius. The cone’s height is", choices: ["\\(3h\\)", "\\(h/3\\)", "\\(h\\)", "\\(6h\\)"], answer: 0, why: "\\(\\pi r^2 h=\\tfrac13\\pi r^2 H\\) gives \\(H=3h\\)." },
+      { id: "q16", marks: 1, section: "A", title: "Q16 · Statistics", prompt: "Mean is 28 and mode is 16. The median is", choices: ["22", "23.5", "24", "24.5"], answer: 2, why: "\\(3\\times\\text{median}=16+2(28)=72\\), so the median is 24." },
+      { id: "q17", marks: 1, section: "A", title: "Q17 · Probability", prompt: "A card is drawn from 52 cards. The probability that it is a red face card is", choices: ["\\(3/13\\)", "\\(3/26\\)", "\\(1/26\\)", "\\(1/13\\)"], answer: 1, why: "There are 6 red face cards, so \\(6/52=3/26\\)." },
+      { id: "q18", marks: 1, section: "A", title: "Q18 · Probability", prompt: "Two dice are rolled. The probability of a doublet is", choices: ["\\(1/3\\)", "\\(1/6\\)", "\\(5/12\\)", "\\(1/12\\)"], answer: 1, why: "Six doublets out of 36 outcomes: \\(1/6\\)." },
+      { id: "q19", marks: 1, section: "A", title: "Q19 · Assertion–reason", prompt: "Assertion: HCF is 5 and the product is 150, so LCM is 30. Reason: \\(\\mathrm{HCF}\\times\\mathrm{LCM}=\\) product.", choices: ["Both true, and the reason explains the assertion", "Both true, and the reason does not explain the assertion", "Assertion true, reason false", "Assertion false, reason true"], answer: 0, why: "\\(150/5=30\\), and the reason is the identity used." },
+      { id: "q20", marks: 1, section: "A", title: "Q20 · Assertion–reason", prompt: "Assertion: \\((0,4)\\) lies on the \\(y\\)-axis. Reason: every point on the \\(y\\)-axis has \\(x\\)-coordinate 0.", choices: ["Both true, and the reason explains the assertion", "Both true, and the reason does not explain the assertion", "Assertion true, reason false", "Assertion false, reason true"], answer: 0, why: "\\(x=0\\) is why \\((0,4)\\) is on the \\(y\\)-axis." },
+      { id: "q22", marks: 2, section: "B", title: "Q22 · Triangles · 2 marks", prompt: "\\(DE\\parallel BC\\), \\(AD=x\\), \\(DB=x-2\\), \\(AE=x+2\\) and \\(EC=x-1\\). Find \\(x\\).", figure: "q22", fields: [{ key: "x", label: "\\(x\\)", marks: 2, accept: ["4"] }], why: "\\(x/(x-2)=(x+2)/(x-1)\\) gives \\(x=4\\)." },
+      { id: "q23", marks: 2, section: "B", title: "Q23 · Coordinate geometry · 2 marks", prompt: "The segment joining \\(A(1,-5)\\) and \\(B(-4,5)\\) meets the \\(x\\)-axis. Find the ratio and the point.", fields: [
+        { key: "ratio", label: "Ratio", marks: 1, accept: ["1:1", "1/1"] },
+        { key: "point", label: "Point", marks: 1, accept: ["-3/2,0", "-1.5,0", "-3/2,0"] }
+      ], why: "The ratio is \\(1:1\\) and the point is \\((-3/2,\\,0)\\)." },
+      { id: "q24", marks: 2, section: "B", title: "Q24 · Trigonometry · 2 marks", prompt: "\\(\\tan(A+B)=\\sqrt{3}\\) and \\(\\tan(A-B)=1/\\sqrt{3}\\), with \\(A>B\\). Find \\(A\\) and \\(B\\).", fields: [
+        { key: "a", label: "\\(A\\) in degrees", marks: 1, accept: ["45", "45degree", "45°"] },
+        { key: "b", label: "\\(B\\) in degrees", marks: 1, accept: ["15", "15degree", "15°"] }
+      ], why: "\\(A+B=60^\\circ\\) and \\(A-B=30^\\circ\\), so \\(A=45^\\circ\\) and \\(B=15^\\circ\\)." },
+      { id: "q25", marks: 2, section: "B", title: "Q25 · Circles · 2 marks", prompt: "A chord of the larger of two concentric circles is 8 cm and touches the smaller circle. The larger radius is 5 cm. Find the smaller radius.", figure: "q25", fields: [{ key: "r", label: "Radius in cm", marks: 2, accept: ["3", "3cm"] }], why: "Half the chord is 4 cm, so the smaller radius is \\(\\sqrt{5^2-4^2}=3\\) cm." },
+      { id: "q26", marks: 3, section: "C", title: "Q26 · Polynomials · 3 marks", prompt: "Zeroes of \\(6x^2-3-7x\\), then the sum and the product.", fields: [
+        { key: "z", label: "Zeroes, either order", marks: 1, accept: ["3/2,-1/3", "-1/3,3/2", "1.5,-0.333", "1.5,-1/3"] },
+        { key: "sum", label: "Sum of zeroes", marks: 1, accept: ["7/6"] },
+        { key: "prod", label: "Product of zeroes", marks: 1, accept: ["-1/2", "-0.5"] }
+      ], why: "Zeroes are \\(3/2\\) and \\(-1/3\\). Sum \\(7/6\\). Product \\(-1/2\\)." },
+      { id: "q27", marks: 3, section: "C", title: "Q27 · Linear equations · 3 marks", prompt: "Solve \\(2x+3y=11\\) and \\(2x-4y=-24\\). Then find \\(m\\) if \\(y=mx+3\\).", fields: [
+        { key: "x", label: "\\(x\\)", marks: 1, accept: ["-2"] },
+        { key: "y", label: "\\(y\\)", marks: 1, accept: ["5"] },
+        { key: "m", label: "\\(m\\)", marks: 1, accept: ["-1"] }
+      ], why: "\\(x=-2\\), \\(y=5\\), \\(m=-1\\)." },
+      { id: "q28", marks: 3, section: "C", title: "Q28 · Arithmetic progressions · 3 marks", prompt: "\\(a_4+a_8=24\\) and \\(a_6+a_{10}=44\\). Write the first three terms.", fields: [
+        { key: "t", label: "First three terms", marks: 3, accept: ["-13,-8,-3"] }
+      ], why: "\\(d=5\\) and \\(a=-13\\), so the terms are \\(-13,-8,-3\\)." },
+      { id: "q31", marks: 3, section: "C", title: "Q31 · Probability · 3 marks", prompt: "Ninety discs numbered 1 to 90. One disc is drawn.", fields: [
+        { key: "two", label: "Two-digit number", marks: 1, accept: ["9/10", "81/90", "0.9"] },
+        { key: "sq", label: "Perfect square", marks: 1, accept: ["1/10", "9/90", "0.1"] },
+        { key: "five", label: "Divisible by 5", marks: 1, accept: ["1/5", "18/90", "0.2"] }
+      ], why: "\\(81/90=9/10\\), \\(9/90=1/10\\), \\(18/90=1/5\\)." },
+      { id: "q32", marks: 5, section: "D", title: "Q32 · Quadratic equations · 5 marks", prompt: "A boat’s speed in still water is 18 km/h. It takes 1 hour more to go 24 km upstream than downstream. Find the speed of the stream.", fields: [{ key: "v", label: "Speed in km/h", marks: 5, accept: ["6", "6km/h", "6kmh"] }], why: "The stream is 6 km/h." },
+      { id: "q34", marks: 5, section: "D", title: "Q34 · Heights and distances · 5 marks", prompt: "From the top of a 7 m building, the angle of elevation of the top of a cable tower is \\(60^\\circ\\) and the angle of depression of its foot is \\(45^\\circ\\). Take \\(\\sqrt{3}=1.732\\). Height of the tower?", figure: "q34", fields: [{ key: "h", label: "Height in m", marks: 5, accept: ["19.124", "19.12", "7(1+sqrt(3))", "7(sqrt(3)+1)", "7+7sqrt(3)"] }], why: "Height \\(=7(1+\\sqrt{3})=19.124\\) m." },
+      { id: "q35", marks: 5, section: "D", title: "Q35 · Surface areas and volumes · 5 marks", prompt: "A hemisphere is surmounted by a cone of height 2 cm. The base diameter is 4 cm. Take \\(\\pi=3.14\\).", figure: "q35", fields: [
+        { key: "toy", label: "Volume of the toy, cm³", marks: 3, accept: ["25.12"] },
+        { key: "diff", label: "Cylinder minus toy, cm³", marks: 2, accept: ["25.12"] }
+      ], why: "Both the toy and the difference of volumes are \\(25.12\\) cm³." },
+      { id: "q36", marks: 4, section: "E", title: "Q36 · Case study · 4 marks", prompt: "Production is 600 units in the third year and 700 in the seventh year, increasing by a constant amount each year.", fields: [
+        { key: "d", label: "Annual increase", marks: 1, accept: ["25"] },
+        { key: "a", label: "First year", marks: 1, accept: ["550"] },
+        { key: "s", label: "Total in 7 years", marks: 2, accept: ["4375"] }
+      ], why: "\\(d=25\\), \\(a=550\\), \\(S_7=4375\\)." },
+      { id: "q37", marks: 4, section: "E", title: "Q37 · Case study · 4 marks", prompt: "Coaches sit at \\(A(3,1)\\), \\(B(6,4)\\) and \\(C(8,6)\\).", figure: "q37", fields: [
+        { key: "ab", label: "Distance \\(AB\\)", marks: 1, accept: ["3sqrt(2)", "sqrt(18)", "4.24", "4.242"] },
+        { key: "col", label: "Are A, B, C collinear? yes or no", marks: 1, accept: ["yes", "collinear", "yescollinear"] },
+        { key: "eq", label: "Equation of points equidistant from A and B", marks: 2, accept: ["x+y=7", "y=7-x", "x+y-7=0"] }
+      ], why: "\\(AB=3\\sqrt{2}\\). The points are collinear. The equation is \\(x+y=7\\)." },
+      { id: "q38", marks: 4, section: "E", title: "Q38 · Case study · 4 marks", prompt: "Heart rates of 50 patients: 60–65 (6), 65–70 (12), 70–75 (18), 75–80 (10), 80–85 (4).", fields: [
+        { key: "modal", label: "Modal class", marks: 1, accept: ["70-75", "70–75"] },
+        { key: "mark", label: "Class mark of the modal class", marks: 0.5, accept: ["72.5", "145/2"] },
+        { key: "h", label: "Class size", marks: 0.5, accept: ["5"] },
+        { key: "mode", label: "Mode", marks: 2, accept: ["72.14", "72.143", "72.142", "505/7"] }
+      ], why: "Modal class \\(70\\text{–}75\\), class mark \\(72.5\\), class size \\(5\\), mode \\(72.14\\)." }
+    ];
+
+    const proofs = [
+      { title: "Q21 · 2 marks", text: "Prove that \\(3+2\\sqrt{5}\\) is irrational, given that \\(\\sqrt{5}\\) is irrational.", why: "If \\(3+2\\sqrt{5}\\) were rational, then \\(\\sqrt{5}\\) would be rational." },
+      { title: "Q29 · 3 marks", text: "Prove \\(\\dfrac{\\sin\\theta-2\\sin^3\\theta}{2\\cos^3\\theta-\\cos\\theta}=\\tan\\theta\\).", why: "The left side simplifies to \\(\\sin\\theta/\\cos\\theta\\)." },
+      { title: "Q30 · 3 marks", text: "Prove that the tangents drawn from an external point to a circle are equal.", why: "The two right triangles are congruent by RHS, so the tangents are equal." },
+      { title: "Q33 · 5 marks", text: "State and prove the Basic Proportionality Theorem.", why: "If a line parallel to one side of a triangle meets the other two sides, it divides those sides in the same ratio." }
+    ];
+
+    function clean(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/√/g, "sqrt")
+        .replace(/−/g, "-")
+        .replace(/–/g, "-")
+        .replace(/\s+/g, "")
+        .replace(/[()°]/g, "")
+        .replace(/cm3|cm³|cm|units|bpm|km\/h|kmh/g, "");
+    }
+
+    const host = document.getElementById("questions");
+    let section = "";
+    questions.forEach((q) => {
+      if (q.section !== section) {
+        section = q.section;
+        const names = { A: "Section A · 1 mark each", B: "Section B · short answers", C: "Section C", D: "Section D", E: "Section E · case studies" };
+        host.insertAdjacentHTML("beforeend", `<h2>${names[section]}</h2>`);
+      }
+      const options = q.choices ? q.choices.map((choice, i) =>
+        `<label><input type="radio" name="${q.id}" value="${i}"> <span>${choice}</span></label>`).join("") : "";
+      const inputs = q.fields ? q.fields.map((field) =>
+        `<label>${field.label}<input name="${q.id}-${field.key}" autocomplete="off"></label>`).join("") : "";
+      host.insertAdjacentHTML("beforeend", `<section class="q" id="${q.id}">
+        <span class="marks">${q.marks} mark${q.marks === 1 ? "" : "s"}</span>
+        <h3>${q.title}</h3>
+        <p>${q.prompt}</p>
+        ${q.figure ? `<figure>${fig[q.figure]}</figure>` : ""}
+        ${options ? `<div class="choices">${options}</div>` : ""}
+        ${inputs ? `<div class="fields">${inputs}</div>` : ""}
+      </section>`);
+    });
+    host.insertAdjacentHTML("beforeend", `<h2>Write these in the notebook</h2>
+      <p>These four proofs are part of the 80-mark paper. They are not in the live score.</p>
+      ${proofs.map((item) => `<section class="q proof"><h3>${item.title}</h3><p>${item.text}</p><p class="why" hidden></p></section>`).join("")}`);
+
+    renderMathInElement(document.getElementById("main"), {
+      delimiters: [{ left: "\\(", right: "\\)", display: false }, { left: "\\[", right: "\\]", display: true }],
+      throwOnError: false
+    });
+
+    document.getElementById("paper").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      let earned = 0;
+      let possible = 0;
+      const misses = [];
+      questions.forEach((q) => {
+        possible += q.marks;
+        if (q.choices) {
+          const picked = data.get(q.id);
+          const ok = picked !== null && Number(picked) === q.answer;
+          if (ok) earned += q.marks;
+          const labels = q.choices.length ? event.target.querySelectorAll(`input[name="${q.id}"]`) : [];
+          labels.forEach((input) => {
+            input.parentElement.classList.remove("good", "bad");
+            if (Number(input.value) === q.answer) input.parentElement.classList.add("good");
+            if (picked !== null && Number(input.value) === Number(picked) && !ok) input.parentElement.classList.add("bad");
+          });
+          if (!ok) misses.push(`${q.title}: ${q.why}`);
+          return;
+        }
+        let got = 0;
+        q.fields.forEach((field) => {
+          const input = event.target.querySelector(`[name="${q.id}-${field.key}"]`);
+          const ok = field.accept.some((item) => clean(item) === clean(input.value));
+          input.classList.remove("good", "bad");
+          input.classList.add(ok ? "good" : "bad");
+          if (ok) got += field.marks;
+        });
+        earned += got;
+        if (got < q.marks) misses.push(`${q.title}: ${q.why}`);
+      });
+      document.querySelectorAll(".proof .why").forEach((node, index) => {
+        node.hidden = false;
+        node.textContent = proofs[index].why;
+        renderMathInElement(node, {
+          delimiters: [{ left: "\\(", right: "\\)", display: false }],
+          throwOnError: false
+        });
+      });
+      const name = String(data.get("student") || "Student").trim();
+      const box = document.getElementById("result");
+      box.hidden = false;
+      box.innerHTML = `<p class="eyebrow">${name}</p><p class="score">${earned} / ${possible}</p>
+        <p>Live score out of 67. The four proofs are outside this number. A full paper is 80.</p>
+        ${misses.length ? `<h3>Look again</h3>${misses.map((line) => `<p class="miss">${line}</p>`).join("")}` : "<p>Every checked question is right.</p>"}`;
+      renderMathInElement(box, { delimiters: [{ left: "\\(", right: "\\)", display: false }], throwOnError: false });
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>

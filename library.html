@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free notes · RK Institution</title>
+  <meta name="description" content="Free bilingual notes from RK Institution: Harappa, acid-base indicators, percentage, and the number system.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,500&family=Noto+Sans+Devanagari:wght@400;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="library">
+  <div id="top"></div>
+  <main id="main">
+    <header class="page-hero wrap">
+      <p class="kicker" style="color:var(--maroon)">Public desk</p>
+      <h1>Notes you can read tonight.</h1>
+      <p>Short pages from the centre’s question papers and chapter notes. The full DPP, the teacher guide, and the printed model papers are given in class.</p>
+      <div class="filters" data-filter="#library-grid">
+        <button type="button" data-key="all" aria-pressed="true">All</button>
+        <button type="button" data-key="gs" aria-pressed="false">GS</button>
+        <button type="button" data-key="science" aria-pressed="false">Science</button>
+        <button type="button" data-key="quant" aria-pressed="false">Quant</button>
+      </div>
+    </header>
+    <section class="section" style="padding-top:10px">
+      <div class="wrap cards" id="library-grid">
+        <a class="note-card" data-tags="gs" href="notes/harappa.html">
+          <span class="tag">GS · H03</span>
+          <h3>Harappa and the earliest cities</h3>
+          <p>Citadel and lower town, Great Bath, seals, weights, Lothal, Dholavira, and why the cities were left.</p>
+        </a>
+        <a class="note-card" data-tags="science" href="notes/indicators.html">
+          <span class="tag">Class 10 Science</span>
+          <h3>Indicators</h3>
+          <p>Natural, synthetic, and olfactory. The turmeric-and-soap board answer, with the two memory lines.</p>
+        </a>
+        <a class="note-card" data-tags="quant" href="notes/percentage.html">
+          <span class="tag">Quant</span>
+          <h3>Percentage as a fraction</h3>
+          <p>Three questions from the Akhlaspur bank. Sell at 5/2 of cost, profit as 1/6, and one-fifth of a number.</p>
+        </a>
+        <a class="note-card" data-tags="quant gs" href="notes/number-system.html">
+          <span class="tag">Foundation Maths 01</span>
+          <h3>Number system</h3>
+          <p>Natural, whole, integer, rational, irrational. Prime and composite. Face value of 8 in 5824.</p>
+        </a>
+      </div>
+      <div class="wrap" style="margin-top:28px">
+        <a class="btn ink" href="practice.html">Sit the 10-question desk</a>
+      </div>
+    </section>
+  </main>
+  <div id="foot"></div>
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admission · RK Institution</title>
+  <meta name="description" content="Send an admission enquiry to RK Institution, Akhlaspur, Bhabua.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,500&family=Noto+Sans+Devanagari:wght@400;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="admit">
+  <div id="top"></div>
+  <main id="main">
+    <header class="page-hero wrap">
+      <p class="kicker" style="color:var(--maroon)">Admission</p>
+      <h1>Tell us the class or the exam.</h1>
+      <p>Write the student’s name, the batch, and a phone number. The centre replies with the hour and the fee. This page does not store the form.</p>
+    </header>
+    <section class="section" style="padding-top:8px">
+      <div class="wrap">
+        <form class="form" id="admit-form">
+          <label>Student or parent name
+            <input name="name" required autocomplete="name" placeholder="Name">
+          </label>
+          <label>Batch
+            <select name="track" required>
+              <option value="">Choose</option>
+              <option>Class 1–5</option>
+              <option>Class 6–8</option>
+              <option>Class 9–10 CBSE</option>
+              <option>Class 9–10 Bihar Board</option>
+              <option>Bihar Police</option>
+              <option>Railway</option>
+              <option>SSC CGL</option>
+              <option>SSC MTS</option>
+              <option>BPSC</option>
+            </select>
+          </label>
+          <label>Phone
+            <input name="phone" required inputmode="tel" autocomplete="tel" placeholder="10-digit mobile">
+          </label>
+          <label>Anything the teacher should know
+            <textarea name="note" placeholder="Board, previous class, or the exam year"></textarea>
+          </label>
+          <button class="btn ink" type="submit">Prepare the enquiry</button>
+        </form>
+        <div id="admit-result" class="notice" style="margin-top:16px" hidden></div>
+      </div>
+    </section>
+  </main>
+  <div id="foot"></div>
+  <script src="assets/site.js"></script>
+</body>
+</html>
